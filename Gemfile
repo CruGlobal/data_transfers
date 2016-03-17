@@ -45,14 +45,14 @@ group :test do
   gem 'rubocop', '~> 0.34.0'
 end
 
-gem 'devise',      '> 4.x'
-gem 'devise_cas_authenticatable'
+# gem 'omniauth', '~> 1.3.1'
+gem 'omniauth-cas', github: '4teamwork/omniauth-cas', branch: 'rails5'
 gem 'ransack',    github: 'activerecord-hackery/ransack'
 gem 'kaminari',   github: 'amatsuda/kaminari', branch: '0-17-stable'
 gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587'
-# To fix a Draper deprecation error
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'activeadmin', github: 'activeadmin'
 gem 'turbolinks'
 gem 'quiet_assets'
+gem 'rest-client'

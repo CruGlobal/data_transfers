@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   get 'monitors/lb' => 'monitors#lb'
 
-  root to: 'admin/entities#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/auth/:provider/callback', to: 'sessions#create'
 
-  # Serve websocket cable requests in-process
-  # mount ActionCable.server => '/cable'
+  resources :users, only: [:index, :update, :destroy] do
+    collection do
+      get :no_access
+    end
+  end
+
+  get '/logout', to: 'sessions#destroy', as: :destroy_admin_user_session
+
+  root to: 'admin/entities#index'
 end

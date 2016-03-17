@@ -1,11 +1,12 @@
-class DeviseCreateUsers < ActiveRecord::Migration[5.0]
+class CreateUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :users do |t|
       ## Database authenticatable
       t.string :username,              null: false, default: ""
-      t.string :guid,              null: false
+      t.string :sso_guid,              null: false
+      t.string :first_name
+      t.string :last_name
 
-      ## Trackable
       t.integer  :sign_in_count, default: 0, null: false
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
