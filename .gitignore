@@ -13,6 +13,8 @@
 /tmp
 
 vendor/ruby
+vendor/cache
+vendor/bundle
 .idea
 
 dump.rdb
