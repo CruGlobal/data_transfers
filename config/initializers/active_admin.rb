@@ -1,4 +1,4 @@
-require 'admin/analytics_footer'
+#require 'admin/analytics_footer'
 
 ActiveAdmin.setup do |config|
   # == Site Title
