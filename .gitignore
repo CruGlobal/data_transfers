@@ -22,3 +22,4 @@ node_modules
 /public/uploads/*
 /coverage
 /.env.*
+.DS_Store
