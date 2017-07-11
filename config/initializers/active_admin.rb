@@ -9,9 +9,9 @@ ActiveAdmin.setup do |config|
   config.site_title = "Data Transfers"
   config.comments = false
 
-  config.namespace :admin do |admin|
-    admin.view_factory.footer = Admin::AnalyticsFooter
-  end
+  #config.namespace :admin do |admin|
+    #admin.view_factory.footer = Admin::AnalyticsFooter
+  #end
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
