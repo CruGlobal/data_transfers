@@ -10,7 +10,7 @@ docker build \
     --build-arg DB_ENV_MYSQL_USER=root \
     --build-arg DB_PORT_3306_TCP_ADDR=$PROJECT_NAME-mysql \
     --build-arg REDIS_PORT_6379_TCP_ADDR=$PROJECT_NAME-redis \
-    -t 056154071827.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_NAME:$GIT_COMMIT-$BUILD_NUMBER .
+    -t 056154071827.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_NAME:$ENVIRONMENT-$BUILD_NUMBER .
 rc=$?
 
 docker stop $PROJECT_NAME-redis $PROJECT_NAME-mysql
