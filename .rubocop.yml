@@ -1,14 +1,14 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
-  Include:
-    - Rakefile
-    - config.ru
   Exclude:
     - db/**/*
     - script/**/*
     - vendor/**/*
     - bin/**/*
 
-  RunRailsCops: true
+Rails:
+  Enabled: true
 
 Documentation:
   Enabled: false
@@ -21,7 +21,7 @@ Style/AndOr:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 120
+  Max: 180
 
 GuardClause:
   MinBodyLength: 3
