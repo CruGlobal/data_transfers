@@ -61,3 +61,5 @@ gem 'activeadmin', github: 'activeadmin', ref: 'e558e8c08e8c5d625a2d01369bfe2704
 gem 'turbolinks'
 gem 'quiet_assets'
 gem 'rest-client'
+gem 'ddtrace'
+gem 'dogstatsd-ruby'
