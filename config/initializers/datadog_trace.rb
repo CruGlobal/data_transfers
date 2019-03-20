@@ -28,4 +28,3 @@ end
 Datadog::Pipeline.before_flush(Datadog::Pipeline::SpanFilter.new do |span|
   span.name == 'rack.request' && span.get_tag('http.url') == '/monitors/lb'
 end)
-
