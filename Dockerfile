@@ -16,6 +16,7 @@ ARG DB_PORT_3306_TCP_ADDR=localhost
 ARG REDIS_PORT_6379_TCP_ADDR=localhost
 ARG REDIS_PORT_6379_TCP_PORT=6379
 ARG DISABLE_ROLLBAR=true
+ARG SECRET_KEY_BASE
 
 RUN bundle exec rake assets:clobber assets:precompile RAILS_ENV=production
 
