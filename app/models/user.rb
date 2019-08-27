@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def name
-    [first_name, last_name].join(' ')
+    [first_name, last_name].join(" ")
   end
 
   def track(request)
@@ -33,11 +33,10 @@ class User < ApplicationRecord
 
   def pull_attributes
     cas_attributes = KeyService.new(username: username).cas_attributes
-    self.sso_guid = cas_attributes['ssoGuid']
-    self.first_name = cas_attributes['firstName']
-    self.last_name = cas_attributes['lastName']
+    self.sso_guid = cas_attributes["ssoGuid"]
+    self.first_name = cas_attributes["firstName"]
+    self.last_name = cas_attributes["lastName"]
   rescue RestClient::ResourceNotFound
-    errors.add(:username, 'is not valid')
+    errors.add(:username, "is not valid")
   end
-
 end
