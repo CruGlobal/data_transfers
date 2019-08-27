@@ -48,9 +48,12 @@ gem 'oj'
 gem 'oj_mimic_json'
 
 group :development, :test do
+  gem 'bundler-audit'
+  gem 'brakeman'
   gem 'dotenv-rails'
   gem 'rspec-rails', '>= 3.5.0.beta1'
   gem 'pry-rails'
+  gem 'standard'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
