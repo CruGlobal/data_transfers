@@ -5,7 +5,7 @@ class KeyService
 
   def cas_attributes
     response = RestClient.get(
-      ENV['CAS_URL'] + "/api/#{ENV['CAS_ACCESS_TOKEN']}/user/attributes?email=#{@username}",
+      ENV["CAS_URL"] + "/api/#{ENV["CAS_ACCESS_TOKEN"]}/user/attributes?email=#{@username}",
       accept: :json
     )
     JSON.parse(response)

@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    redirect_to '/auth/cas' and return unless current_user
+    redirect_to("/auth/cas") && return unless current_user
 
-    redirect_to '/users/no_access' unless current_user
+    redirect_to "/users/no_access" unless current_user
   end
 
   def current_user=(user)
@@ -27,5 +27,4 @@ class ApplicationController < ActionController::Base
     Thread.current[:user_id] = session[:user_id]
     @current_user ||= User.find(session[:user_id])
   end
-
 end

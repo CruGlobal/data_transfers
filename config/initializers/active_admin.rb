@@ -1,4 +1,4 @@
-#require 'admin/analytics_footer'
+# require 'admin/analytics_footer'
 
 ActiveAdmin.setup do |config|
   # == Site Title
@@ -9,9 +9,9 @@ ActiveAdmin.setup do |config|
   config.site_title = "Data Transfers"
   config.comments = false
 
-  #config.namespace :admin do |admin|
-    #admin.view_factory.footer = Admin::AnalyticsFooter
-  #end
+  # config.namespace :admin do |admin|
+  # admin.view_factory.footer = Admin::AnalyticsFooter
+  # end
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -121,7 +121,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'entities#index'
+  config.root_to = "entities#index"
 
   # == Admin Comments
   #
@@ -217,12 +217,12 @@ ActiveAdmin.setup do |config|
   #
   # To change the default utility navigation to show a link to your website & a logout btn
   #
-    config.namespace :admin do |admin|
-      admin.build_menu :utility_navigation do |menu|
-        # menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-        admin.add_logout_button_to_menu menu
-      end
+  config.namespace :admin do |admin|
+    admin.build_menu :utility_navigation do |menu|
+      # menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+      admin.add_logout_button_to_menu menu
     end
+  end
   #
   # If you wanted to add a static menu item to the default menu provided:
   #
