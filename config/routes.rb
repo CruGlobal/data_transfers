@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  get 'monitors/lb' => 'monitors#lb'
+  get "monitors/lb" => "monitors#lb"
 
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get "/auth/:provider/callback", to: "sessions#create"
 
   resources :users, only: [:index, :update, :destroy] do
     collection do
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/logout', to: 'sessions#destroy', as: :destroy_admin_user_session
+  get "/logout", to: "sessions#destroy", as: :destroy_admin_user_session
 
-  root to: 'admin/entities#index'
+  root to: "admin/entities#index"
 end

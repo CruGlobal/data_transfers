@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20160316132743) do
   add_index "entities", ["name"], name: "entityname", unique: true, using: :btree
 
   create_table "entity_transfers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT" do |t|
-    t.integer "entity_id",                    null: false
-    t.integer "transfer_id",                  null: false
+    t.integer "entity_id",    limit: 5,       null: false
+    t.integer "transfer_id",  limit: 5,       null: false
     t.boolean "is_recipient", default: false, null: false
   end
 
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20160316132743) do
   add_index "entity_transfers", ["transfer_id"], name: "fk_entities_transfers_transfers_1", using: :btree
 
   create_table "purpose_transfers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT" do |t|
-    t.integer "purpose_id",  null: false
-    t.integer "transfer_id", null: false
+    t.integer "purpose_id",  limit: 5,  null: false
+    t.integer "transfer_id", limit: 5, null: false
   end
 
   add_index "purpose_transfers", ["purpose_id"], name: "fk_purposes_transfers_purposes_1", using: :btree
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20160316132743) do
   add_index "transfer_types", ["name"], name: "transfertypename", unique: true, using: :btree
 
   create_table "transfers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT" do |t|
-    t.integer "transfer_type_id"
+    t.integer "transfer_type_id", limit: 5
     t.string  "name"
   end
 
