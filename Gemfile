@@ -85,6 +85,7 @@ group :test do
 end
 
 gem "omniauth-cas", github: "4teamwork/omniauth-cas", branch: "rails5"
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem "ransack"
 gem "kaminari"
 gem "formtastic", github: "justinfrench/formtastic"

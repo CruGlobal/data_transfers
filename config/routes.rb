@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get "monitors/lb" => "monitors#lb"
 
+  get "/sessions/new", to: "sessions#new"
   get "/auth/:provider/callback", to: "sessions#create"
 
   resources :users, only: [:index, :update, :destroy] do

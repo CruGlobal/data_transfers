@@ -17,5 +17,5 @@ env:
   - REDIS_PORT_6379_TCP_ADDR=localhost REDIS_PORT_6379_TCP_PORT=6379 REDIS_PORT_6379_TCP_ADDR_SESSION=localhost REDIS_PORT_6379_TCP_PORT_SESSION=6379 DB_ENV_MYSQL_DB_TEST=data_transfers_test DB_ENV_MYSQL_USER=travis TRAVIS=true GIVE_SESSION_KEY=99999 DB_PORT_3306_TCP_ADDR=localhost DB_ENV_MYSQL_PASS=''
 script:
   - bundle exec standardrb
-  - bundle exec bundle audit check --update
+  - bundle exec bundle audit check --update --ignore CVE-2015-9284
   - bundle exec brakeman -A -q --no-pager --ensure-latest
