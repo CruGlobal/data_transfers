@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    redirect_to("/auth/cas") && return unless current_user
+    redirect_to("/sessions/new") && return unless current_user
 
     redirect_to "/users/no_access" unless current_user
   end
