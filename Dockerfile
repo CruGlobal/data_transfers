@@ -26,7 +26,7 @@ ARG REDIS_PORT_6379_TCP_PORT=6379
 ARG DISABLE_ROLLBAR=true
 ARG SECRET_KEY_BASE
 
-RUN bundle exec rake assets:clobber assets:precompile RAILS_ENV=production
+RUN bundle exec rails assets:clobber assets:precompile RAILS_ENV=production
 
 ## Run this last to make sure permissions are all correct
 RUN mkdir -p /home/app/webapp/tmp /home/app/webapp/db /home/app/webapp/log /home/app/webapp/public/uploads && \
