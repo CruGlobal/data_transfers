@@ -4,13 +4,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.6"
 
-gem "rails", "~> 5.2.3"
+gem "rails", "~> 6.0.3"
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Puma as the app server
 gem "puma", "~> 3.11"
 # Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0"
+gem "sass-rails", ">= 6"
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -87,7 +87,7 @@ gem "omniauth-cas", github: "4teamwork/omniauth-cas", branch: "rails5"
 gem "omniauth-rails_csrf_protection", "~> 0.1"
 gem "ransack"
 gem "kaminari"
-gem "formtastic", github: "justinfrench/formtastic"
+gem "formtastic"
 gem "draper"
 gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"
 gem "activeadmin"
