@@ -44,3 +44,4 @@ dump.rdb
 /.env.*
 .DS_Store
 /spec/examples.txt
+/node_modules
