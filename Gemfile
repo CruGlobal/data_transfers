@@ -37,7 +37,6 @@ gem "bootsnap", ">= 1.1.0", require: false
 # gem 'capistrano-rails', group: :development
 
 gem "mysql2"
-gem "newrelic_rpm"
 gem "versionist"
 gem "rack-cors", require: "rack/cors"
 gem "redis-rails"
