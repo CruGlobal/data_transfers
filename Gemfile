@@ -84,7 +84,8 @@ group :test do
   gem "rubocop"
 end
 
-gem "omniauth-cas", github: "4teamwork/omniauth-cas", branch: "rails5"
+gem "omniauth"
+gem "omniauth-oktaoauth", git: "https://github.com/cruglobal/omniauth-oktaoauth.git"
 gem "omniauth-rails_csrf_protection", "~> 0.1"
 gem "ransack"
 gem "kaminari"

@@ -1,17 +1,21 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
 
-  def create
-    @user = User.find_from_auth_hash(auth_hash)
-    redirect_to("/users/no_access") && return unless @user
+  def new
+  end
 
+  def create
+    @user = User.find_or_create_from_auth_hash(auth_hash)
     self.current_user = @user
+    session[:id_token] = auth_hash.dig("extra", "id_token")
     redirect_to "/"
   end
 
   def destroy
-    Thread.current[:user_id] = session[:user_id] = nil
-    redirect_to "#{ENV["CAS_URL"]}/logout"
+    session[:user_id] = nil
+    redirect_to "#{ENV.fetch("OKTA_ISSUER")}/v1/logout?id_token_hint=#{session[:id_token]}&post_logout_redirect_uri=#{request.base_url}"
   end
 
   protected

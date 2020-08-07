@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   end
 
   get "/logout", to: "sessions#destroy", as: :destroy_admin_user_session
+  resource :session, only: %i[new create destroy]
+  get "auth/oktaoauth/callback", to: "sessions#create"
 
   root to: "admin/entities#index"
 end
