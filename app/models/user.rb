@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  #validates :username, presence: true, uniqueness: true
-  #before_validation :pull_attributes, on: :create
+  # validates :username, presence: true, uniqueness: true
+  # before_validation :pull_attributes, on: :create
 
   def self.find_from_auth_hash(auth_hash)
     byebug
