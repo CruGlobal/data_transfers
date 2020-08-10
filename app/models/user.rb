@@ -29,15 +29,4 @@ class User < ApplicationRecord
     self.current_sign_in_ip = request.remote_ip
     save(validate: false)
   end
-
-  private
-
-  def pull_attributes
-    cas_attributes = KeyService.new(username: username).cas_attributes
-    self.sso_guid = cas_attributes["ssoGuid"]
-    self.first_name = cas_attributes["firstName"]
-    self.last_name = cas_attributes["lastName"]
-  rescue RestClient::ResourceNotFound
-    errors.add(:username, "is not valid")
-  end
 end
