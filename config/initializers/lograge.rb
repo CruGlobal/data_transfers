@@ -13,7 +13,7 @@ Rails.application.configure do
   config.lograge.custom_options = lambda do |event|
     exceptions = %w[controller action format id]
     {
-      params: event.payload[:params].except(*exceptions),
+      params: event.payload[:params].except(*exceptions)
     }
   end
   config.lograge.custom_payload do |controller|
@@ -24,7 +24,7 @@ Rails.application.configure do
     end
     {
       user_id: user_id,
-      request: controller.request,
+      request: controller.request
     }
   end
 end

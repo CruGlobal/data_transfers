@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   protect_from_forgery with: :exception
-  force_ssl(if: :ssl_configured?, except: :lb)
 
   protected
 
