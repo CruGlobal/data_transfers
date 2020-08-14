@@ -1,17 +1,16 @@
 class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
-  before_validation :pull_attributes, on: :create
 
   def self.find_from_auth_hash(auth_hash)
-    existing = find_by(sso_guid: auth_hash.extra.ssoGuid)
+    existing = find_by(sso_guid: auth_hash.extra.raw_info.ssoguid)
     return existing.apply_auth_hash(auth_hash) if existing
   end
 
   def apply_auth_hash(auth_hash)
-    self.sso_guid = auth_hash.extra.ssoGuid
-    self.username = auth_hash.uid
-    self.first_name = auth_hash.extra.firstName
-    self.last_name = auth_hash.extra.lastName
+    self.sso_guid = auth_hash.extra.raw_info.ssoguid
+    self.username = auth_hash.extra.raw_info.preferred_username
+    self.first_name = auth_hash.info.first_name
+    self.last_name = auth_hash.info.last_name
     save!
     self
   end
@@ -27,16 +26,5 @@ class User < ApplicationRecord
     self.last_sign_in_ip = current_sign_in_ip
     self.current_sign_in_ip = request.remote_ip
     save(validate: false)
-  end
-
-  private
-
-  def pull_attributes
-    cas_attributes = KeyService.new(username: username).cas_attributes
-    self.sso_guid = cas_attributes["ssoGuid"]
-    self.first_name = cas_attributes["firstName"]
-    self.last_name = cas_attributes["lastName"]
-  rescue RestClient::ResourceNotFound
-    errors.add(:username, "is not valid")
   end
 end

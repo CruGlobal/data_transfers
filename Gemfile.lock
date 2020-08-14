@@ -1,12 +1,10 @@
 GIT
-  remote: https://github.com/4teamwork/omniauth-cas.git
-  revision: df9391641e9dcde33c816de49b04b16fd3eb9a30
-  branch: rails5
+  remote: https://github.com/CruGlobal/omniauth-oktaoauth.git
+  revision: e78ffb420cb9ab89fd8951d9fe8a20f175c41618
   specs:
-    omniauth-cas (1.1.0)
-      addressable (~> 2.3)
-      nokogiri (~> 1.5)
-      omniauth
+    omniauth-oktaoauth (0.1.6)
+      omniauth (~> 1.5)
+      omniauth-oauth2 (>= 1.4.0, < 2.0)
 
 GIT
   remote: https://github.com/rails/activemodel-serializers-xml.git
@@ -94,7 +92,7 @@ GEM
     ast (2.4.1)
     bootsnap (1.4.2)
       msgpack (~> 1.0)
-    brakeman (4.8.2)
+    brakeman (4.9.0)
     builder (3.2.4)
     bundler-audit (0.6.1)
       bundler (>= 1.2.0, < 3)
@@ -146,6 +144,8 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -171,6 +171,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.3.0)
+    jwt (2.2.1)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -207,16 +208,28 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.1)
     msgpack (1.3.3)
+    multi_json (1.15.0)
+    multi_xml (0.6.0)
+    multipart-post (2.1.1)
     mysql2 (0.5.2)
     netrc (0.11.0)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    oauth2 (1.4.4)
+      faraday (>= 0.8, < 2.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
     oj (3.10.7)
     oj_mimic_json (1.0.1)
     omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
+    omniauth-oauth2 (1.7.0)
+      oauth2 (~> 1.4)
+      omniauth (~> 1.9)
     omniauth-rails_csrf_protection (0.1.2)
       actionpack (>= 4.2)
       omniauth (>= 1.3.1)
@@ -425,7 +438,7 @@ DEPENDENCIES
   mysql2
   oj
   oj_mimic_json
-  omniauth-cas!
+  omniauth-oktaoauth!
   omniauth-rails_csrf_protection (~> 0.1)
   ougai (~> 1.7)
   pry-rails
