@@ -1,9 +1,5 @@
 <div id="nav">
-  You don't have access to this tool. Anyone who has access can grant you access. Try asking one of the following people:
+  You don't have access to this tool.
 
-  <ul>
-    <% User.order(:last_name).each do |user| %>
-      <li><%= user.name %> - <%= mail_to(user.username) %></li>
-    <% end %>
-  </ul>
+  To request access, please email <a href="mailto:help@cru.org" target="_blank">help@cru.org</a>
 </div>
