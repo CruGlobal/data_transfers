@@ -8,6 +8,11 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_from_auth_hash(auth_hash)
+    unless @user
+      redirect_to no_access_users_path
+      return
+    end
+
     self.current_user = @user
     session[:id_token] = auth_hash.dig("extra", "id_token")
     redirect_to "/"
