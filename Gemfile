@@ -54,7 +54,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "mysql2"
+gem "pg"
 
 gem "activeadmin"
 gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"

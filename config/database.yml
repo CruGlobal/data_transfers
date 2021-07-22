@@ -1,12 +1,13 @@
 development: &dev
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  reconnect: true
-  pool: <%= ENV['DB_ENV_MYSQL_POOL'] || 25 %>
-  database: <%= ENV['DB_ENV_MYSQL_DB'] || 'data_transfers' %>
-  username: <%= ENV['DB_ENV_MYSQL_USER'] %>
-  password: <%= ENV['DB_ENV_MYSQL_PASS'] %>
-  host: <%= ENV['DB_PORT_3306_TCP_ADDR'] %>
+  reconnect: false
+  pool: <%= ENV['DB_ENV_POSTGRESQL_POOL'] || 25 %>
+  database: <%= ENV['DB_ENV_POSTGRESQL_DB'] || 'data_transfers' %>
+  username: <%= ENV['DB_ENV_POSTGRESQL_USER'] %>
+  password: <%= ENV['DB_ENV_POSTGRESQL_PASS'] %>
+  host: <%= ENV['DB_PORT_5432_TCP_ADDR'] %>
+  port: <%= ENV['DB_PORT_5432_TCP_PORT'] || 5432 %>
 
 
 staging:
@@ -20,8 +21,7 @@ production:
 # Do not set this db to the same as development or production.
 test:
   <<: *dev
-  pool: <%= ENV['DB_ENV_MYSQL_POOL_TEST'] || 25 %>
-  username: <%= ENV['DB_ENV_MYSQL_USER_TEST'] || ENV['DB_ENV_MYSQL_USER'] %>
-  password: <%= ENV['DB_ENV_MYSQL_PASS_TEST'] || ENV['DB_ENV_MYSQL_PASS'] %>
-  host: <%= ENV['DB_PORT_3306_TCP_ADDR_TEST'] || ENV['DB_PORT_3306_TCP_ADDR'] %>
-  database: <%= ENV['DB_ENV_MYSQL_DB_TEST'] || 'data_transfers_test' %>
+  database: <%= ENV['DB_ENV_POSTGRESQL_DB_TEST'] || 'data_transfers_test' %>
+  username: <%= ENV['DB_ENV_POSTGRESQL_USER_TEST'] || ENV['DB_ENV_POSTGRESQL_USER'] %>
+  password: <%= ENV['DB_ENV_POSTGRESQL_PASS_TEST'] || ENV['DB_ENV_POSTGRESQL_PASS'] %>
+  host: <%= ENV['DB_PORT_5432_TCP_ADDR_TEST'] %>

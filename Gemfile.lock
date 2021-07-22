@@ -210,7 +210,6 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
-    mysql2 (0.5.2)
     netrc (0.11.0)
     nio4r (2.5.7)
     nokogiri (1.11.4)
@@ -238,6 +237,7 @@ GEM
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
+    pg (1.2.3)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     pry (0.10.3)
@@ -436,12 +436,12 @@ DEPENDENCIES
   kaminari
   listen (~> 3.2)
   lograge
-  mysql2
   oj
   oj_mimic_json
   omniauth-oktaoauth!
   omniauth-rails_csrf_protection (~> 0.1)
   ougai (~> 1.7)
+  pg
   pry-rails
   puma (~> 4.3)
   rack-cors
