@@ -18,77 +18,82 @@ ActiveRecord::Schema.define(version: 2016_03_16_132743) do
   enable_extension "uuid-ossp"
 
   create_table "countries", id: false, force: :cascade do |t|
-    t.string "country", limit: 65535
-    t.string "code", limit: 65535
-    t.string "lat", limit: 65535
-    t.string "lon", limit: 65535
+    t.text "country"
+    t.text "code"
+    t.text "lat"
+    t.text "lon"
   end
 
-  create_table "entities", id: :integer, default: nil, force: :cascade do |t|
-    t.string "name", limit: 255, null: false
-    t.string "legal_name", limit: 255, null: false
-    t.string "legal_other", limit: 65535
-    t.string "address", limit: 65535
-    t.string "telephone", limit: 65535
-    t.string "fax", limit: 65535
-    t.string "email", limit: 65535
-    t.string "dp_reg", limit: 65535
-    t.string "dp_contact", limit: 65535
-    t.string "signatory", limit: 65535
-    t.integer "is_eea", limit: 2, null: false
-    t.string "country", limit: 65535, null: false
-    t.string "area", limit: 65535
-    t.integer "is_areaoffice", limit: 2, null: false
-    t.string "description", limit: 65535
+  create_table "entities", id: :integer, default: -> { "nextval('entities_seq'::regclass)" }, force: :cascade do |t|
+    t.string "name", limit: 255, default: "", null: false
+    t.string "legal_name", limit: 255, default: "", null: false
+    t.text "legal_other"
+    t.text "address"
+    t.text "telephone"
+    t.text "fax"
+    t.text "email"
+    t.text "dp_reg"
+    t.text "dp_contact"
+    t.text "signatory"
+    t.integer "is_eea", limit: 2, default: 0, null: false
+    t.text "country", null: false
+    t.text "area"
+    t.integer "is_areaoffice", limit: 2, default: 0, null: false
+    t.text "description"
+    t.index ["name"], name: "entityname_entities", unique: true
   end
 
-  create_table "entity_transfers", id: :integer, default: nil, force: :cascade do |t|
+  create_table "entity_transfers", id: :integer, default: -> { "nextval('entity_transfers_seq'::regclass)" }, force: :cascade do |t|
     t.integer "entity_id", null: false
     t.integer "transfer_id", null: false
-    t.integer "is_recipient", limit: 2, null: false
+    t.integer "is_recipient", limit: 2, default: 0, null: false
   end
 
-  create_table "purpose_transfers", id: :integer, default: nil, force: :cascade do |t|
+  create_table "purpose_transfers", id: :integer, default: -> { "nextval('purpose_transfers_seq'::regclass)" }, force: :cascade do |t|
     t.integer "purpose_id", null: false
     t.integer "transfer_id", null: false
   end
 
-  create_table "purposes", id: :integer, default: nil, force: :cascade do |t|
-    t.string "name", limit: 255, null: false
-    t.string "full_description", limit: 65535, null: false
-    t.string "data_subjects", limit: 65535, null: false
-    t.string "data_categories", limit: 65535, null: false
-    t.string "data_recipients", limit: 65535, null: false
-    t.string "additional_info", limit: 65535
-    t.string "storage_limit", limit: 65535, null: false
-    t.string "data_sensitive", limit: 65535, null: false
-    t.string "security_policy", limit: 65535, null: false
-    t.string "context", limit: 65535
+  create_table "purposes", id: :integer, default: -> { "nextval('purposes_seq'::regclass)" }, force: :cascade do |t|
+    t.string "name", limit: 255, default: "", null: false
+    t.text "full_description", null: false
+    t.text "data_subjects", null: false
+    t.text "data_categories", null: false
+    t.text "data_recipients", null: false
+    t.text "additional_info"
+    t.text "storage_limit", null: false
+    t.text "data_sensitive", null: false
+    t.text "security_policy", null: false
+    t.text "context"
+    t.index ["name"], name: "purposename_purposes", unique: true
   end
 
-  create_table "transfer_types", id: :integer, default: nil, force: :cascade do |t|
-    t.string "name", limit: 255, null: false
+  create_table "transfer_types", id: :integer, default: -> { "nextval('transfer_types_seq'::regclass)" }, force: :cascade do |t|
+    t.string "name", limit: 255, default: "", null: false
     t.string "template_name", limit: 255
-    t.string "context", limit: 255
+    t.text "context"
+    t.index ["name"], name: "transfertypename_transfer_types", unique: true
   end
 
-  create_table "transfers", id: :integer, default: nil, force: :cascade do |t|
+  create_table "transfers", id: :integer, default: -> { "nextval('transfers_seq'::regclass)" }, force: :cascade do |t|
     t.integer "transfer_type_id"
     t.string "name", limit: 255
+    t.index ["name"], name: "transfername_transfers", unique: true
   end
 
-  create_table "users", id: :integer, default: nil, force: :cascade do |t|
-    t.string "username", limit: 255, null: false
+  create_table "users", id: :integer, default: -> { "nextval('users_seq'::regclass)" }, force: :cascade do |t|
+    t.string "username", limit: 255, default: "", null: false
     t.string "sso_guid", limit: 255, null: false
     t.string "first_name", limit: 255
     t.string "last_name", limit: 255
-    t.integer "sign_in_count", null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip", limit: 255
     t.string "last_sign_in_ip", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username_users", unique: true
   end
 
 end
