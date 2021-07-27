@@ -14,7 +14,7 @@ ActiveAdmin.register Entity do
       f.input :dp_contact
       f.input :signatory
       f.input :is_eea
-      f.input :country, :as => :string
+      f.input :country, as: :string
       f.input :area
       f.input :is_areaoffice
       f.input :description
