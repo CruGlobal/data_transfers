@@ -8,7 +8,6 @@ cache:
   yarn: true
 services:
   - redis-server
-  - postgresql
 addons:
   - postgresql: "13"
 before_install:
