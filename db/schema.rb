@@ -96,4 +96,9 @@ ActiveRecord::Schema.define(version: 2016_03_16_132743) do
     t.index ["username"], name: "index_users_on_username_users", unique: true
   end
 
+  add_foreign_key "entity_transfers", "entities", name: "fk_entities_transfers_entities_1", on_update: :restrict, on_delete: :restrict
+  add_foreign_key "entity_transfers", "transfers", name: "fk_entities_transfers_transfers_1", on_update: :restrict, on_delete: :restrict
+  add_foreign_key "purpose_transfers", "purposes", name: "fk_purposes_transfers_purposes_1", on_update: :restrict, on_delete: :restrict
+  add_foreign_key "purpose_transfers", "transfers", name: "fk_purposes_transfers_transfers_1", on_update: :restrict, on_delete: :restrict
+  add_foreign_key "transfers", "transfer_types", name: "fk_transfers_transfertype_1", on_update: :restrict, on_delete: :restrict
 end
