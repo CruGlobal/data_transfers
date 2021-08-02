@@ -92,7 +92,7 @@ GEM
     ast (2.4.1)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
-    brakeman (5.0.1)
+    brakeman (5.1.1)
     builder (3.2.4)
     bundler-audit (0.6.1)
       bundler (>= 1.2.0, < 3)
@@ -468,7 +468,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.7.3p183
+   ruby 2.7.4p191
 
 BUNDLED WITH
    2.1.4
