@@ -12,6 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2016_03_16_132743) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
   create_table "countries", id: false, comment: "From https://www.worlddata.info/downloads/", force: :cascade do |t|
     t.text "country"
     t.text "code"
@@ -70,7 +75,7 @@ ActiveRecord::Schema.define(version: 2016_03_16_132743) do
   create_table "transfer_types", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "template_name"
-    t.text "context", size: :tiny
+    t.text "context"
     t.index ["name"], name: "transfertypename", unique: true
   end
 
