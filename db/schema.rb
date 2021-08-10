@@ -12,14 +12,19 @@
 
 ActiveRecord::Schema.define(version: 2016_03_16_132743) do
 
-  create_table "countries", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", comment: "From https://www.worlddata.info/downloads/", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "countries", id: false, comment: "From https://www.worlddata.info/downloads/", force: :cascade do |t|
     t.text "country"
     t.text "code"
     t.text "lat"
     t.text "lon"
   end
 
-  create_table "entities", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", force: :cascade do |t|
+  create_table "entities", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "legal_name", default: "", null: false
     t.text "legal_other"
@@ -38,7 +43,7 @@ ActiveRecord::Schema.define(version: 2016_03_16_132743) do
     t.index ["name"], name: "entityname", unique: true
   end
 
-  create_table "entity_transfers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", force: :cascade do |t|
+  create_table "entity_transfers", force: :cascade do |t|
     t.integer "entity_id", null: false
     t.integer "transfer_id", null: false
     t.boolean "is_recipient", default: false, null: false
@@ -46,14 +51,14 @@ ActiveRecord::Schema.define(version: 2016_03_16_132743) do
     t.index ["transfer_id"], name: "fk_entities_transfers_transfers_1"
   end
 
-  create_table "purpose_transfers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", force: :cascade do |t|
+  create_table "purpose_transfers", force: :cascade do |t|
     t.integer "purpose_id", null: false
     t.integer "transfer_id", null: false
     t.index ["purpose_id"], name: "fk_purposes_transfers_purposes_1"
     t.index ["transfer_id"], name: "fk_purposes_transfers_transfers_1"
   end
 
-  create_table "purposes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", force: :cascade do |t|
+  create_table "purposes", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "full_description", null: false
     t.text "data_subjects", null: false
@@ -67,21 +72,21 @@ ActiveRecord::Schema.define(version: 2016_03_16_132743) do
     t.index ["name"], name: "purposename", unique: true
   end
 
-  create_table "transfer_types", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", force: :cascade do |t|
+  create_table "transfer_types", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "template_name"
-    t.text "context", size: :tiny
+    t.text "context"
     t.index ["name"], name: "transfertypename", unique: true
   end
 
-  create_table "transfers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", force: :cascade do |t|
+  create_table "transfers", force: :cascade do |t|
     t.integer "transfer_type_id"
     t.string "name"
     t.index ["name"], name: "transfername", unique: true
     t.index ["transfer_type_id"], name: "fk_transfers_transfertype_1"
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "sso_guid", null: false
     t.string "first_name"
