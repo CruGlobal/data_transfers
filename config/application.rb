@@ -40,11 +40,7 @@ module DataTransfers
       end
     end
 
-    # Enable ougai
-    if Rails.env.development? || Rails.const_defined?(:Console)
-      config.logger = Log::Logger.new($stdout)
-    elsif !Rails.env.test? # use default logger in test env
-      config.logger = Log::Logger.new(Rails.root.join("log", "datadog.log"))
-    end
+    # Send all logs to stdout, which docker reads and sends to datadog.
+    config.logger = Log::Logger.new($stdout)
   end
 end
