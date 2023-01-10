@@ -125,12 +125,15 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
-    ddtrace (0.48.0)
-      ffi (~> 1.0)
+    ddtrace (1.8.0)
+      debase-ruby_core_source (>= 0.10.16, <= 0.10.18)
+      libdatadog (~> 0.9.0.1.0)
+      libddwaf (~> 1.5.1.0.0)
       msgpack
+    debase-ruby_core_source (0.10.18)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dogstatsd-ruby (4.0.0)
+    dogstatsd-ruby (5.5.0)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
@@ -190,6 +193,9 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    libdatadog (0.9.0.1.0)
+    libddwaf (1.5.1.0.0)
+      ffi (~> 1.0)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -435,8 +441,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   coffee-rails
-  ddtrace
-  dogstatsd-ruby
+  ddtrace (~> 1.4)
+  dogstatsd-ruby (~> 5.3)
   dotenv-rails
   draper
   factory_bot_rails
